@@ -1,3 +1,74 @@
+# mamba-windows-build-v2.2.6.post3
+
+> [!WARNING]
+> 多分動作します。何があっても絶対に動作保証をしません。<br />
+> It will probably work. We absolutely do not guarantee any functionality under any circumstances.
+
+Codex CLIの`gpt-5.1-codex-max ( Extra high)`でvibe codingで修正させました。
+
+[既存のwindows-build](https://github.com/FuouM/mamba-windows-build)と過去のリポジトリ(v1.1.3)を比較させつつ、現行の`v2.2.6.post3`をwindowsでビルドできるところまで修正してもらいました。
+
+変更手順は後日Noteに記載します。
+
+[FuouM/mamba-windows-build: Mamba SSM architecture](https://github.com/FuouM/mamba-windows-build)に敬意を込めて。
+
+---
+
+The `gpt-5.1-codex-max (Extra high)` model from Codex CLI was used to refine the vibe coding.
+We had it compare the current `v2.2.6.post3` build with the existing [windows-build](https://github.com/FuouM/mamba-windows-build) and a previous repository version (v1.1.3), making necessary modifications to enable successful Windows build completion.
+
+The exact modification steps will be documented in a Note at a later date.
+
+With due respect to [FuouM/mamba-windows-build: Mamba SSM architecture](https://github.com/FuouM/mamba-windows-build).
+
+
+
+## How to build in Windows
+
+おおむね[causal-conv1dのwindowsでのビルド時の手順](https://note.com/kurogane_himaki/n/ne96c3457a503)と同様です。<br />
+不要なコマンド、環境変数があったら適宜取り外してください。
+
+### 環境/environment
+
+```
+Windows
+Python 3.12
+CUDA 12.8
+```
+
+### requirements
+
+```
+PyTorch 2.9.1+cu128
+triton-windows==3.5.1.post21
+transformers==4.48.3
+causal_conv1d==1.5.0.post8
+flash_attn==2.8.3
+rwkv-fla (必要な場合/if you need, for nrmotrron-flash)
+```
+
+Win(amd64)+cp312+cu128のcausal_conv1dとflash_attnは[Huggingface](https://huggingface.co/kurogane/mamba-causal-conv1d-win-build-torch2.9.1-cu128)にアップロードしておきました。
+
+
+
+### build-related commands
+
+You **SHOULD** run these commands in the **“x64 Native Tools Command Prompt for VS 2022” (MSVC v142/v143)**. If you have it installed, you can find it from the **Windows search bar**.
+
+```
+set CUDA_HOME=C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.8
+set CUDA_PATH=%CUDA_HOME%
+set PATH=%CUDA_HOME%\bin;%CUDA_HOME%\libnvvp;%PATH%
+set MAMBA_FORCE_BUILD=TRUE
+set DISTUTILS_USE_SDK=1
+
+py -3.12 -m pip install -e .[causal-conv1d] --no-build-isolation
+```
+
+多分動くはず。検証待ってます。
+
+
+
 # Mamba
 
 ![Mamba](assets/selection.png "Selective State Space")
