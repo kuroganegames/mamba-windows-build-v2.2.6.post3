@@ -51,7 +51,7 @@ rwkv-fla (required for nemotrron-flash)
 
 Win(amd64)+cp312+cu128のwheelファイルをcausal_conv1dとflash_attnは[Huggingface](https://huggingface.co/kurogane/mamba-causal-conv1d-win-build-torch2.9.1-cu128)にアップロードしておきました。
 
-[上記wheelファイルでの環境構築時のログ](.\new_venv_installation_all_logs.txt)
+[上記wheelファイルでの環境構築時のログ](new_venv_installation_all_logs.txt)
 
 
 
