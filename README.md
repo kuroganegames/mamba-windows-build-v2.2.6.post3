@@ -44,10 +44,14 @@ triton-windows==3.5.1.post21
 transformers==4.48.3
 causal_conv1d==1.5.0.post8
 flash_attn==2.8.3
-rwkv-fla (必要な場合/if you need, for nrmotrron-flash)
+
+accelerate (required for nemotrron-h(e.g. Nemotron V2(nvidia/NVIDIA-Nemotron-Nano-9B-v2)))
+rwkv-fla (required for nemotrron-flash)
 ```
 
-Win(amd64)+cp312+cu128のcausal_conv1dとflash_attnは[Huggingface](https://huggingface.co/kurogane/mamba-causal-conv1d-win-build-torch2.9.1-cu128)にアップロードしておきました。
+Win(amd64)+cp312+cu128のwheelファイルをcausal_conv1dとflash_attnは[Huggingface](https://huggingface.co/kurogane/mamba-causal-conv1d-win-build-torch2.9.1-cu128)にアップロードしておきました。
+
+[上記wheelファイルでの環境構築時のログ](.\new_venv_installation_all_logs.txt)
 
 
 
@@ -66,6 +70,22 @@ py -3.12 -m pip install -e .[causal-conv1d] --no-build-isolation
 ```
 
 多分動くはず。検証待ってます。
+
+
+
+### Run
+
+少なくとも"nvidia/NVIDIA-Nemotron-Nano-9B-v2"と"nvidia/Nemotron-Flash-3B-Instruct"の推論コードは正常動作してそうです。
+
+nvidia/NVIDIA-Nemotron-Nano-9B-v2
+
+![run_nemotron-h](./assets/run_nemotron-h.png)
+
+nvidia/Nemotron-Flash-3B-Instruct
+
+![run_nemotron-flash](./assets/run_nemotron-flash.png)
+
+
 
 
 
