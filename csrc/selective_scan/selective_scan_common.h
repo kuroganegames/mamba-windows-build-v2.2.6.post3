@@ -11,6 +11,12 @@
 #endif
 #include <cuda_fp16.h>
 #include <c10/util/complex.h>  // For scalar_value_type
+#include <c10/cuda/CUDAException.h>  // For C10_CUDA_CHECK
+#include <iostream>
+
+#ifndef M_LOG2E
+#define M_LOG2E 1.4426950408889634074
+#endif
 
 
 #ifndef USE_ROCM
@@ -52,6 +58,17 @@ inline __device__ float3 operator+(const float3 &a, const float3 &b) {
 
 inline __device__ float4 operator+(const float4 & a, const float4 & b){
     return {a.x + b.x, a.y + b.y, a.z + b.z, a.w + b.w};
+}
+
+inline void set_max_dynamic_smem(const void *kernel, int smem_bytes, const char *rocm_warn_msg) {
+#ifndef USE_ROCM
+    C10_CUDA_CHECK(cudaFuncSetAttribute(kernel, cudaFuncAttributeMaxDynamicSharedMemorySize, smem_bytes));
+#else
+    C10_CUDA_CHECK(cudaFuncSetAttribute(const_cast<void *>(kernel), cudaFuncAttributeMaxDynamicSharedMemorySize, smem_bytes));
+    if (rocm_warn_msg != nullptr) {
+        std::cerr << rocm_warn_msg << std::endl;
+    }
+#endif
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////

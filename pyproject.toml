@@ -17,7 +17,8 @@ classifiers = [
 ]
 dependencies = [
     "torch",
-    "triton",
+    "triton; platform_system != \"Windows\"",
+    "triton-windows; platform_system == \"Windows\"",
     "ninja",
     "einops",
     "transformers",

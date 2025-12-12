@@ -507,19 +507,15 @@ void selective_scan_bwd_launch(SSMParamsBwd &params, cudaStream_t stream) {
                         constexpr int kSmemSize = Ktraits::kSmemSize + MAX_DSTATE * sizeof(typename Ktraits::scan_t) + (kNThreads + 4 * MAX_DSTATE) * sizeof(typename Ktraits::weight_t);
 
                         dim3 grid(params.batch, params.dim);
-                        
+
                         auto kernel = &selective_scan_bwd_kernel<Ktraits>;
 
                         if (kSmemSize >= 48 * 1024) {
-
-                            #ifndef USE_ROCM
-                            C10_CUDA_CHECK(cudaFuncSetAttribute(
-                                kernel, cudaFuncAttributeMaxDynamicSharedMemorySize, kSmemSize));
-                            #else
-                            C10_CUDA_CHECK(cudaFuncSetAttribute(
-                                (void *) kernel, cudaFuncAttributeMaxDynamicSharedMemorySize, kSmemSize));
-                            std::cerr << "Warning (selective_scan_bwd_kernel): attempting to set maxDynamicSharedMemorySize on an AMD GPU which is currently a non-op (in ROCm versions <= 6.1). This might lead to undefined behavior. \n" << std::endl;
-                            #endif
+                            set_max_dynamic_smem(
+                                static_cast<const void *>(kernel),
+                                kSmemSize,
+                                "Warning (selective_scan_bwd_kernel): attempting to set maxDynamicSharedMemorySize on an AMD GPU which is currently a non-op (in ROCm versions <= 6.1). This might lead to undefined behavior."
+                            );
 
                         }
 

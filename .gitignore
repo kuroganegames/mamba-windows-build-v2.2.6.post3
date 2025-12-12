@@ -3,4 +3,8 @@
 build/
 **.so
 *.hip
-*_hip.*
+*_hip.*build.log
+*.pyd
+*.pyd
+build.log
+*.bundle

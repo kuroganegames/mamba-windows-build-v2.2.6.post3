@@ -38,7 +38,8 @@ BASE_WHEEL_URL = "https://github.com/state-spaces/mamba/releases/download/{tag_n
 
 # FORCE_BUILD: Force a fresh build locally, instead of attempting to find prebuilt wheels
 # SKIP_CUDA_BUILD: Intended to allow CI to use a simple `python setup.py sdist` run to copy over raw files, without any cuda compilation
-FORCE_BUILD = os.getenv("MAMBA_FORCE_BUILD", "FALSE") == "TRUE"
+# Default FORCE_BUILD to TRUE so Windows (where no prebuilt wheels exist) always builds from source unless explicitly overridden.
+FORCE_BUILD = os.getenv("MAMBA_FORCE_BUILD", "TRUE") == "TRUE"
 SKIP_CUDA_BUILD = os.getenv("MAMBA_SKIP_CUDA_BUILD", "FALSE") == "TRUE"
 # For CI, we want the option to build with C++11 ABI since the nvcr images use C++11 ABI
 FORCE_CXX11_ABI = os.getenv("MAMBA_FORCE_CXX11_ABI", "FALSE") == "TRUE"
@@ -131,6 +132,7 @@ ext_modules = []
 
 
 HIP_BUILD = bool(torch.version.hip)
+IS_WINDOWS = sys.platform == "win32"
 
 if not SKIP_CUDA_BUILD:
     print("\n\ntorch.__version__  = {}\n\n".format(torch.__version__))
@@ -203,6 +205,24 @@ if not SKIP_CUDA_BUILD:
             cc_flag.append("-gencode")
             cc_flag.append("arch=compute_121,code=sm_121")
 
+        # Allow overriding arch list (useful for MSVC/nvcc on Windows) via env var.
+        # Accepts space- or comma-separated entries like "8.0 8.6 8.9" or "sm_80 sm_86".
+        arch_override = os.getenv("MAMBA_CUDA_ARCH_LIST") or os.getenv("TORCH_CUDA_ARCH_LIST")
+        if arch_override:
+            cc_flag = []
+            for arch_item in arch_override.replace(",", " ").split():
+                arch_clean = arch_item.lower().replace("sm_", "").replace(".", "")
+                if not arch_clean.isdigit():
+                    continue
+                cc_flag.append("-gencode")
+                cc_flag.append(f"arch=compute_{arch_clean},code=sm_{arch_clean}")
+        elif sys.platform == "win32":
+            # Windows nvcc/MSVC combinations can choke on future SMs; keep a conservative default.
+            cc_flag = []
+            for arch_clean in ["75", "80", "86", "89", "90"]:
+                cc_flag.append("-gencode")
+                cc_flag.append(f"arch=compute_{arch_clean},code=sm_{arch_clean}")
+
 
     # HACK: The compiler flag -D_GLIBCXX_USE_CXX11_ABI is set to be the same as
     # torch._C._GLIBCXX_USE_CXX11_ABI
@@ -225,10 +245,12 @@ if not SKIP_CUDA_BUILD:
             + cc_flag,
         }
     else:
-        extra_compile_args = {
-            "cxx": ["-O3", "-std=c++17"],
-            "nvcc": append_nvcc_threads(
-                [
+        cxx_stdflag = "/std:c++17" if IS_WINDOWS else "-std=c++17"
+        cxx_optflag = "/O2" if IS_WINDOWS else "-O3"
+
+        cxx_compile_args = [cxx_optflag, cxx_stdflag]
+
+        nvcc_flags = [
                     "-O3",
                     "-std=c++17",
                     "-U__CUDA_NO_HALF_OPERATORS__",
@@ -242,9 +264,17 @@ if not SKIP_CUDA_BUILD:
                     "--use_fast_math",
                     "--ptxas-options=-v",
                     "-lineinfo",
-                ]
-                + cc_flag
-            ),
+                ] + cc_flag
+
+        # MSVC uses different flag syntax; also allow overriding NVCC's host-compiler version check.
+        if IS_WINDOWS:
+            nvcc_flags.extend(["-Xcompiler", cxx_optflag, "-Xcompiler", cxx_stdflag])
+            if os.getenv("MAMBA_ALLOW_UNSUPPORTED_COMPILER", "TRUE").upper() == "TRUE":
+                nvcc_flags.append("-allow-unsupported-compiler")
+
+        extra_compile_args = {
+            "cxx": cxx_compile_args,
+            "nvcc": append_nvcc_threads(nvcc_flags),
         }
 
     ext_modules.append(
@@ -358,6 +388,9 @@ class CachedWheelsCommand(_bdist_wheel):
             # If the wheel could not be downloaded, build from source
             super().run()
 
+# Prefer triton-windows on Windows where the upstream triton wheel is unavailable.
+TRITON_DEP = "triton-windows" if sys.platform == "win32" else "triton"
+
 setup(
     name=PACKAGE_NAME,
     version=get_package_version(),
@@ -396,7 +429,7 @@ setup(
         "packaging",
         "ninja",
         "einops",
-        "triton",
+        TRITON_DEP,
         "transformers",
         # "causal_conv1d>=1.4.0",
     ],
