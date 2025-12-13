@@ -109,14 +109,14 @@ def _chunk_scan_fwd_kernel(
             C = tl.load(C_ptrs, mask=(offs_m[:, None] < chunk_size_limit) & (offs_k_dstate[None, :] < dstate), other=0.0)
             prev_states = tl.load(prev_states_ptrs, mask=(offs_k_dstate[:, None] < dstate) & (offs_n[None, :] < hdim), other=0.0)
             prev_states = prev_states.to(C_ptr.dtype.element_ty)
-            acc = tl.dot(C, prev_states) * scale_m[:, None]
+            acc = tl.dot(C.to(tl.float32), prev_states.to(tl.float32)) * scale_m[:, None]
         else:
             for k in range(0, dstate, BLOCK_SIZE_K):
                 C = tl.load(C_ptrs, mask=(offs_m[:, None] < chunk_size_limit) & (offs_k_dstate[None, :] < dstate - k), other=0.0)
                 # C = (C * scale_m[:, None]).to(C_ptr.dtype.element_ty)
                 prev_states = tl.load(prev_states_ptrs, mask=(offs_k_dstate[:, None] < dstate - k) & (offs_n[None, :] < hdim), other=0.0)
                 prev_states = prev_states.to(C_ptr.dtype.element_ty)
-                acc += tl.dot(C, prev_states)
+                acc = tl.dot(C.to(tl.float32), prev_states.to(tl.float32), acc = acc)
                 C_ptrs += BLOCK_SIZE_K
                 prev_states_ptrs += BLOCK_SIZE_K
             acc *= scale_m[:, None]
@@ -141,7 +141,7 @@ def _chunk_scan_fwd_kernel(
             cb = tl.where(mask, cb, 0.0)
         cb = cb.to(x_ptr.dtype.element_ty)
         x = tl.load(x_ptrs, mask=(offs_k[:, None] < chunk_size_limit - k) & (offs_n[None, :] < hdim), other=0.0)
-        acc += tl.dot(cb, x)
+        acc = tl.dot(cb.to(tl.float32), x.to(tl.float32), acc = acc)
         cb_ptrs += BLOCK_SIZE_K * stride_cb_csize_k
         x_ptrs += BLOCK_SIZE_K * stride_x_seqlen
         dt_ptrs += BLOCK_SIZE_K * stride_dt_csize
@@ -260,7 +260,7 @@ def _chunk_scan_fwd_kernel_wip(
     # cb = tl.where(mask, cb, 0.0)
     # cb = cb.to(x_ptr.dtype.element_ty)
     # x = tl.load(x_ptrs, mask=(offs_m[:, None] < chunk_size_limit) & (offs_n[None, :] < hdim), other=0.0)
-    # acc += tl.dot(cb, x)
+    # acc = tl.dot(cb.to(tl.float32), x.to(tl.float32), acc = acc)
     # if HAS_D:
     #     if D_HAS_HDIM:
     #         D = tl.load(D_ptr + pid_h * stride_D_head + offs_n, mask=offs_n < hdim, other=0.0).to(tl.float32)
@@ -289,7 +289,7 @@ def _chunk_scan_fwd_kernel_wip(
         # cb = tl.where(mask, cb, 0.0)
         # cb = cb.to(x_ptr.dtype.element_ty)
         x = tl.load(x_ptrs, mask=(offs_m[:, None] < chunk_size_limit - start_m) & (offs_n[None, :] < hdim), other=0.0)
-        # acc += tl.dot(cb, x)
+        # acc = tl.dot(cb.to(tl.float32), x.to(tl.float32), acc = acc)
 
         if HAS_D:
             if D_HAS_HDIM:
@@ -319,7 +319,7 @@ def _chunk_scan_fwd_kernel_wip(
             scale = tl.exp((dA_cs_last - dA_cs_m)) * dt_m
             # B *= scale
             B = B.to(x_ptr.dtype.element_ty)
-            tmp = tl.dot(B, x)
+            tmp = tl.dot(B.to(tl.float32), x.to(tl.float32))
             prev_states += tmp.to(prev_states.dtype)
 
         C_ptrs += BLOCK_SIZE_M * stride_C_seqlen
@@ -492,7 +492,7 @@ def _chunk_scan_bwd_dstates_kernel(
             scale_k = tl.where(seq_idx_k == seq_idx_prev, tl.exp(dA_cs_k), 0.0)
         dout = (dout * scale_k).to(dout_ptr.dtype.element_ty)
         c = tl.load(c_ptrs, mask=(offs_k[:, None] < chunk_size_limit - k) & (offs_n[None, :] < dstate), other=0.0)
-        acc += tl.dot(dout, c)
+        acc = tl.dot(dout.to(tl.float32), c.to(tl.float32), acc = acc)
         dout_ptrs += BLOCK_SIZE_K * stride_dout_seqlen
         c_ptrs += BLOCK_SIZE_K * stride_c_seqlen
         dA_cumsum_ptrs += BLOCK_SIZE_K * stride_dA_cs_csize
@@ -582,7 +582,7 @@ def _chunk_scan_bwd_dc_kernel(
         dout = tl.load(dout_ptrs, mask=(offs_m[:, None] < chunk_size_limit) & (offs_k[None, :] < hdim), other=0.0)
         prev_states = tl.load(prev_states_ptrs, mask=(offs_k[:, None] < hdim) & (offs_n[None, :] < dstate), other=0.0)
         prev_states = prev_states.to(dout_ptrs.dtype.element_ty)
-        dc = tl.dot(dout, prev_states)
+        dc = tl.dot(dout.to(tl.float32), prev_states.to(tl.float32))
         dA_cs_m = tl.load(dA_cumsum_ptrs, mask=offs_m < chunk_size_limit, other=0.0).to(tl.float32)
         if not HAS_SEQ_IDX:
             scale = tl.exp(dA_cs_m)
@@ -689,7 +689,7 @@ def _chunk_scan_bwd_dx_kernel(
         mask = (k + offs_k[None, :] >= offs_m[:, None]) & (k + offs_k[None, :] < K_MAX)
         cb = tl.where(mask, cb, 0.0)
         cb = cb.to(dout_ptr.dtype.element_ty)
-        acc += tl.dot(cb, dout)
+        acc = tl.dot(cb.to(tl.float32), dout.to(tl.float32), acc = acc)
         cb_ptrs += BLOCK_SIZE_K * stride_cb_csize_k
         dout_ptrs += BLOCK_SIZE_K * stride_dout_seqlen
         dA_cumsum_ptrs += BLOCK_SIZE_K * stride_dA_cs_csize
@@ -813,7 +813,7 @@ def _chunk_scan_bwd_dcb_kernel(
     for h in range(nheads_iter):
         dout = tl.load(dout_ptrs, mask=(offs_m[:, None] < chunk_size_limit) & (offs_k[None, :] < hdim), other=0.0)
         x = tl.load(x_ptrs, mask=(offs_k[:, None] < hdim) & (offs_n[None, :] < chunk_size_limit_n), other=0.0)
-        dcb = tl.dot(dout, x)
+        dcb = tl.dot(dout.to(tl.float32), x.to(tl.float32))
         dt_n = tl.load(dt_ptrs, mask=offs_n < chunk_size, other=0.0).to(tl.float32)
         dcb *= dt_n
         dA_cs_m = tl.load(dA_cumsum_ptr + offs_m * stride_dA_cs_csize, mask=offs_m < chunk_size_limit, other=0.0).to(tl.float32)
@@ -999,12 +999,12 @@ def _chunk_scan_bwd_ddAcs_stable_kernel_old(
     # for k in range(0, hdim, BLOCK_SIZE_K):
     #     dout = tl.load(dout_ptrs, mask=(offs_m[:, None] < chunk_size_limit) & (offs_k[None, :] < hdim - k), other=0.0)
     #     x = tl.load(x_ptrs, mask=(offs_k[:, None] < hdim - k) & (offs_n[None, :] < chunk_size_limit), other=0.0)
-    #     acc += tl.dot(dout, x)
+    #     acc = tl.dot(dout.to(tl.float32), x.to(tl.float32), acc = acc)
     #     dout_ptrs += BLOCK_SIZE_K * stride_dout_hdim
     #     x_ptrs += BLOCK_SIZE_K * stride_x_hdim
     dout = tl.load(dout_ptrs, mask=(offs_m[:, None] < chunk_size_limit) & (offs_k[None, :] < hdim), other=0.0)
     x = tl.load(x_ptrs, mask=(offs_k[:, None] < hdim) & (offs_n[None, :] < chunk_size_limit_n), other=0.0)
-    acc = tl.dot(dout, x)
+    acc = tl.dot(dout.to(tl.float32), x.to(tl.float32))
     cb = tl.load(cb_ptrs, mask=(offs_m[:, None] < chunk_size) & (offs_n[None, :] < chunk_size), other=0.0).to(tl.float32)
     acc *= cb
     dt_n = tl.load(dt_ptrs, mask=offs_n < chunk_size, other=0.0).to(tl.float32)
@@ -1040,7 +1040,7 @@ def _chunk_scan_bwd_ddAcs_stable_kernel_old(
     # ddAcs_ptrs = ddAcs_ptr + offs_n * stride_ddAcs_csize_n
     # for n in range(0, chunk_size_limit_n, 64):
     #     x = tl.load(x_ptrs, mask=(offs_k[:, None] < hdim) & (offs_n[None, :] < chunk_size_limit_n - n), other=0.0)
-    #     acc = tl.dot(dout, x)
+    #     acc = tl.dot(dout.to(tl.float32), x.to(tl.float32))
     #     cb = tl.load(cb_ptrs, mask=(offs_m[:, None] < chunk_size) & (offs_n[None, :] < chunk_size - n), other=0.0).to(tl.float32)
     #     acc *= cb
     #     dt_n = tl.load(dt_ptrs, mask=offs_n < chunk_size - n, other=0.0).to(tl.float32)
@@ -1126,12 +1126,12 @@ def _chunk_scan_bwd_ddAcs_stable_kernel(
         # for k in range(0, hdim, BLOCK_SIZE_K):
         #     dout = tl.load(dout_ptrs, mask=(offs_m[:, None] < chunk_size_limit) & (offs_k[None, :] < hdim - k), other=0.0)
         #     x = tl.load(x_ptrs, mask=(offs_k[:, None] < hdim - k) & (offs_n[None, :] < chunk_size_limit), other=0.0)
-        #     acc += tl.dot(dout, x)
+        #     acc = tl.dot(dout.to(tl.float32), x.to(tl.float32), acc = acc)
         #     dout_ptrs += BLOCK_SIZE_K * stride_dout_hdim
         #     x_ptrs += BLOCK_SIZE_K * stride_x_hdim
         # x = tl.load(x_ptrs, mask=(offs_k[:, None] < hdim) & (offs_n[None, :] < chunk_size_limit_n), other=0.0)
         x = tl.load(x_ptrs, mask=(offs_k[:, None] < hdim) & (offs_n[None, :] < chunk_size_limit - start_n), other=0.0)
-        acc = tl.dot(dout, x)
+        acc = tl.dot(dout.to(tl.float32), x.to(tl.float32))
         dt_n = tl.load(dt_ptrs, mask=offs_n < chunk_size - start_n, other=0.0).to(tl.float32)
         acc *= dt_n
         # If there's seq_idx, we already zero'ed out cb[i, j] for seq_idx[i] != seq_idx[j]
@@ -1216,7 +1216,7 @@ def _chunk_scan_bwd_ddAcs_prev_kernel(
     dout = tl.load(dout_ptrs, mask=(offs_m[:, None] < chunk_size_limit) & (offs_k[None, :] < hdim), other=0.0)
     prev_states = tl.load(prev_states_ptrs, mask=(offs_k[:, None] < hdim) & (offs_n[None, :] < dstate), other=0.0)
     prev_states = prev_states.to(dout_ptrs.dtype.element_ty)
-    acc = tl.dot(dout, prev_states)
+    acc = tl.dot(dout.to(tl.float32), prev_states.to(tl.float32))
     c = tl.load(C_ptrs, mask=(offs_m[:, None] < chunk_size_limit) & (offs_n[None, :] < dstate), other=0.0).to(tl.float32)
     ddA_cs = tl.sum(acc * c, axis=1)
     dA_cs_m = tl.load(dA_cumsum_ptrs, mask=offs_m < chunk_size_limit, other=0.0).to(tl.float32)

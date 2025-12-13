@@ -1,0 +1,279 @@
+(venv_mamba_test1) I:\dev\mamba_test1>python Granite4_0.py
+🦥 Unsloth: Will patch your computer to enable 2x faster free finetuning.
+I:\dev\mamba_test1\venv_mamba_test1\Lib\site-packages\transformers\utils\hub.py:110: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+🦥 Unsloth Zoo will now patch everything to make training faster!
+==((====))==  Unsloth 2025.12.5: Fast Granitemoehybrid patching. Transformers: 4.57.3.
+   \\   /|    NVIDIA GeForce RTX 3090. Num GPUs = 1. Max memory: 24.0 GB. Platform: Windows.
+O^O/ \_/ \    Torch: 2.9.1+cu128. CUDA: 8.6. CUDA Toolkit: 12.8. Triton: 3.5.1
+\        /    Bfloat16 = TRUE. FA [Xformers = None. FA2 = True]
+ "-____-"     Free license: http://github.com/unslothai/unsloth
+Unsloth: Fast downloading is enabled - ignore downloading bars which are red colored!
+Unsloth: QLoRA and full finetuning all not selected. Switching to 16bit LoRA.
+The fast path for GraniteMoeHybrid will be used when running the model on a GPU
+Loading checkpoint shards: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 2/2 [00:02<00:00,  1.10s/it]
+Unsloth: Making `model.base_model.model.model` require gradients
+Unsloth: We found double BOS tokens - we shall remove one automatically.
+Unsloth: Tokenizing ["text"] (num_proc=1):   0%|                                                                                                         | 0/504 [00:00<?, ? examples/s]I:\dev\mamba_test1\venv_mamba_test1\Lib\site-packages\transformers\utils\hub.py:110: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+🦥 Unsloth: Will patch your computer to enable 2x faster free finetuning.
+I:\dev\mamba_test1\venv_mamba_test1\Lib\site-packages\dill\_dill.py:442: UserWarning: WARNING: Unsloth should be imported before [trl, transformers, peft] to ensure all optimizations are applied. Your code may run slower or encounter memory issues without these optimizations.
+
+Please restructure your imports with 'import unsloth' at the top of your file.
+  return StockUnpickler.find_class(self, module, name)
+🦥 Unsloth Zoo will now patch everything to make training faster!
+Unsloth: Tokenizing ["text"] (num_proc=1): 100%|███████████████████████████████████████████████████████████████████████████████████████████████| 504/504 [00:10<00:00, 48.24 examples/s]
+🦥 Unsloth: Padding-free auto-enabled, enabling faster training.
+Map (num_proc=20):   0%|                                                                                                                                 | 0/504 [00:00<?, ? examples/s]   Unsloth: Will patch your computer to enable 2x faster free finetuning.
+🦥 Unsloth: Will patch your computer to enable 2x faster free finetuning.
+🦥 Unsloth: Will patch your computer to enable 2x faster free finetuning.
+🦥 Unsloth: Will patch your computer to enable 2x faster free finetuning.
+🦥 Unsloth: Will patch your computer to enable 2x faster free finetuning.
+🦥 Unsloth: Will patch your computer to enable 2x faster free finetuning.
+🦥 Unsloth: Will patch your computer to enable 2x faster free finetuning.
+🦥 Unsloth: Will patch your computer to enable 2x faster free finetuning.
+🦥 Unsloth: Will patch your computer to enable 2x faster free finetuning.
+🦥 Unsloth: Will patch your computer to enable 2x faster free finetuning.
+🦥 Unsloth: Will patch your computer to enable 2x faster free finetuning.
+🦥 Unsloth: Will patch your computer to enable 2x faster free finetuning.
+🦥 Unsloth: Will patch your computer to enable 2x faster free finetuning.
+🦥 Unsloth: Will patch your computer to enable 2x faster free finetuning.
+🦥 Unsloth: Will patch your computer to enable 2x faster free finetuning.
+🦥 Unsloth: Will patch your computer to enable 2x faster free finetuning.
+🦥 Unsloth: Will patch your computer to enable 2x faster free finetuning.
+🦥 Unsloth: Will patch your computer to enable 2x faster free finetuning.
+🦥 Unsloth: Will patch your computer to enable 2x faster free finetuning.
+🦥 Unsloth: Will patch your computer to enable 2x faster free finetuning.
+I:\dev\mamba_test1\venv_mamba_test1\Lib\site-packages\transformers\utils\hub.py:110: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+I:\dev\mamba_test1\venv_mamba_test1\Lib\site-packages\transformers\utils\hub.py:110: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+I:\dev\mamba_test1\venv_mamba_test1\Lib\site-packages\transformers\utils\hub.py:110: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+I:\dev\mamba_test1\venv_mamba_test1\Lib\site-packages\transformers\utils\hub.py:110: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+I:\dev\mamba_test1\venv_mamba_test1\Lib\site-packages\transformers\utils\hub.py:110: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+I:\dev\mamba_test1\venv_mamba_test1\Lib\site-packages\transformers\utils\hub.py:110: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+I:\dev\mamba_test1\venv_mamba_test1\Lib\site-packages\transformers\utils\hub.py:110: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+I:\dev\mamba_test1\venv_mamba_test1\Lib\site-packages\transformers\utils\hub.py:110: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+I:\dev\mamba_test1\venv_mamba_test1\Lib\site-packages\transformers\utils\hub.py:110: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+I:\dev\mamba_test1\venv_mamba_test1\Lib\site-packages\transformers\utils\hub.py:110: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+I:\dev\mamba_test1\venv_mamba_test1\Lib\site-packages\transformers\utils\hub.py:110: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+I:\dev\mamba_test1\venv_mamba_test1\Lib\site-packages\transformers\utils\hub.py:110: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+I:\dev\mamba_test1\venv_mamba_test1\Lib\site-packages\transformers\utils\hub.py:110: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+I:\dev\mamba_test1\venv_mamba_test1\Lib\site-packages\transformers\utils\hub.py:110: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+I:\dev\mamba_test1\venv_mamba_test1\Lib\site-packages\transformers\utils\hub.py:110: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+I:\dev\mamba_test1\venv_mamba_test1\Lib\site-packages\transformers\utils\hub.py:110: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+I:\dev\mamba_test1\venv_mamba_test1\Lib\site-packages\transformers\utils\hub.py:110: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+I:\dev\mamba_test1\venv_mamba_test1\Lib\site-packages\transformers\utils\hub.py:110: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+I:\dev\mamba_test1\venv_mamba_test1\Lib\site-packages\transformers\utils\hub.py:110: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+I:\dev\mamba_test1\venv_mamba_test1\Lib\site-packages\transformers\utils\hub.py:110: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+Map (num_proc=20): 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 504/504 [00:20<00:00, 24.93 examples/s]
+GPU = NVIDIA GeForce RTX 3090. Max memory = 24.0 GB.
+6.1 GB of memory reserved.
+The model is already on multiple devices. Skipping the move to device specified in `args`.
+==((====))==  Unsloth - 2x faster free finetuning | Num GPUs used = 1
+   \\   /|    Num examples = 504 | Num Epochs = 1 | Total steps = 60
+O^O/ \_/ \    Batch size per device = 2 | Gradient accumulation steps = 4
+\        /    Data Parallel GPUs = 1 | Total batch size (2 x 4 x 1) = 8
+ "-____-"     Trainable parameters = 38,404,096 of 3,229,800,192 (1.19% trained)
+  0%|                                                                                                                                                            | 0/60 [00:00<?, ?it/s]Unsloth: Will smartly offload gradients to save VRAM!
+__triton_launcher.c
+   ライブラリ C:\Users\himak\AppData\Local\Temp\tmp5sgk54hk\__triton_launcher.cp312-win_amd64.lib とオブジェクト C:\Users\himak\AppData\Local\Temp\tmp5sgk54hk\__triton_launcher.cp312-win_amd64.exp を作成中
+__triton_launcher.c
+   ライブラリ C:\Users\himak\AppData\Local\Temp\tmppcp5hmjy\__triton_launcher.cp312-win_amd64.lib とオブジェクト C:\Users\himak\AppData\Local\Temp\tmppcp5hmjy\__triton_launcher.cp312-win_amd64.exp を作成中
+__triton_launcher.c
+   ライブラリ C:\Users\himak\AppData\Local\Temp\tmpi7omik_r\__triton_launcher.cp312-win_amd64.lib とオブジェクト C:\Users\himak\AppData\Local\Temp\tmpi7omik_r\__triton_launcher.cp312-win_amd64.exp を作成中
+__triton_launcher.c
+   ライブラリ C:\Users\himak\AppData\Local\Temp\tmpogi5bpsl\__triton_launcher.cp312-win_amd64.lib とオブジェクト C:\Users\himak\AppData\Local\Temp\tmpogi5bpsl\__triton_launcher.cp312-win_amd64.exp を作成中
+__triton_launcher.c
+   ライブラリ C:\Users\himak\AppData\Local\Temp\tmp8jsly7hw\__triton_launcher.cp312-win_amd64.lib とオブジェクト C:\Users\himak\AppData\Local\Temp\tmp8jsly7hw\__triton_launcher.cp312-win_amd64.exp を作成中
+__triton_launcher.c
+   ライブラリ C:\Users\himak\AppData\Local\Temp\tmpf30ud7bw\__triton_launcher.cp312-win_amd64.lib とオブジェクト C:\Users\himak\AppData\Local\Temp\tmpf30ud7bw\__triton_launcher.cp312-win_amd64.exp を作成中
+__triton_launcher.c
+   ライブラリ C:\Users\himak\AppData\Local\Temp\tmp3gldvbk5\__triton_launcher.cp312-win_amd64.lib とオブジェクト C:\Users\himak\AppData\Local\Temp\tmp3gldvbk5\__triton_launcher.cp312-win_amd64.exp を作成中
+__triton_launcher.c
+   ライブラリ C:\Users\himak\AppData\Local\Temp\tmpdyo5airq\__triton_launcher.cp312-win_amd64.lib とオブジェクト C:\Users\himak\AppData\Local\Temp\tmpdyo5airq\__triton_launcher.cp312-win_amd64.exp を作成中
+__triton_launcher.c
+   ライブラリ C:\Users\himak\AppData\Local\Temp\tmp6xibr457\__triton_launcher.cp312-win_amd64.lib とオブジェクト C:\Users\himak\AppData\Local\Temp\tmp6xibr457\__triton_launcher.cp312-win_amd64.exp を作成中
+__triton_launcher.c
+   ライブラリ C:\Users\himak\AppData\Local\Temp\tmppytosqjk\__triton_launcher.cp312-win_amd64.lib とオブジェクト C:\Users\himak\AppData\Local\Temp\tmppytosqjk\__triton_launcher.cp312-win_amd64.exp を作成中
+__triton_launcher.c
+   ライブラリ C:\Users\himak\AppData\Local\Temp\tmpq0lw58_t\__triton_launcher.cp312-win_amd64.lib とオブジェクト C:\Users\himak\AppData\Local\Temp\tmpq0lw58_t\__triton_launcher.cp312-win_amd64.exp を作成中
+__triton_launcher.c
+   ライブラリ C:\Users\himak\AppData\Local\Temp\tmprzfpp5ch\__triton_launcher.cp312-win_amd64.lib とオブジェクト C:\Users\himak\AppData\Local\Temp\tmprzfpp5ch\__triton_launcher.cp312-win_amd64.exp を作成中
+__triton_launcher.c
+   ライブラリ C:\Users\himak\AppData\Local\Temp\tmpnvw9jw1d\__triton_launcher.cp312-win_amd64.lib とオブジェクト C:\Users\himak\AppData\Local\Temp\tmpnvw9jw1d\__triton_launcher.cp312-win_amd64.exp を作成中
+__triton_launcher.c
+   ライブラリ C:\Users\himak\AppData\Local\Temp\tmphnkdb5hl\__triton_launcher.cp312-win_amd64.lib とオブジェクト C:\Users\himak\AppData\Local\Temp\tmphnkdb5hl\__triton_launcher.cp312-win_amd64.exp を作成中
+__triton_launcher.c
+   ライブラリ C:\Users\himak\AppData\Local\Temp\tmptky2ha44\__triton_launcher.cp312-win_amd64.lib とオブジェクト C:\Users\himak\AppData\Local\Temp\tmptky2ha44\__triton_launcher.cp312-win_amd64.exp を作成中
+__triton_launcher.c
+   ライブラリ C:\Users\himak\AppData\Local\Temp\tmpxf_mudcg\__triton_launcher.cp312-win_amd64.lib とオブジェクト C:\Users\himak\AppData\Local\Temp\tmpxf_mudcg\__triton_launcher.cp312-win_amd64.exp を作成中
+__triton_launcher.c
+   ライブラリ C:\Users\himak\AppData\Local\Temp\tmp_v8y_3yt\__triton_launcher.cp312-win_amd64.lib とオブジェクト C:\Users\himak\AppData\Local\Temp\tmp_v8y_3yt\__triton_launcher.cp312-win_amd64.exp を作成中
+__triton_launcher.c
+   ライブラリ C:\Users\himak\AppData\Local\Temp\tmpe4b_8d20\__triton_launcher.cp312-win_amd64.lib とオブジェクト C:\Users\himak\AppData\Local\Temp\tmpe4b_8d20\__triton_launcher.cp312-win_amd64.exp を作成中
+__triton_launcher.c
+   ライブラリ C:\Users\himak\AppData\Local\Temp\tmpda6lpn51\__triton_launcher.cp312-win_amd64.lib とオブジェクト C:\Users\himak\AppData\Local\Temp\tmpda6lpn51\__triton_launcher.cp312-win_amd64.exp を作成中
+{'loss': 0.9178, 'grad_norm': 0.49202242493629456, 'learning_rate': 0.0, 'epoch': 0.02}
+{'loss': 1.2444, 'grad_norm': 0.8028704524040222, 'learning_rate': 4e-05, 'epoch': 0.03}
+{'loss': 1.4179, 'grad_norm': 0.6904850602149963, 'learning_rate': 8e-05, 'epoch': 0.05}
+{'loss': 1.9085, 'grad_norm': 1.3165351152420044, 'learning_rate': 0.00012, 'epoch': 0.06}
+{'loss': 1.7517, 'grad_norm': 0.9998793601989746, 'learning_rate': 0.00016, 'epoch': 0.08}
+{'loss': 1.697, 'grad_norm': 0.9310054183006287, 'learning_rate': 0.0002, 'epoch': 0.1}
+{'loss': 1.5006, 'grad_norm': 0.7914060950279236, 'learning_rate': 0.00019636363636363636, 'epoch': 0.11}
+{'loss': 1.4096, 'grad_norm': 0.8751149773597717, 'learning_rate': 0.00019272727272727274, 'epoch': 0.13}
+{'loss': 1.0792, 'grad_norm': 0.5696737170219421, 'learning_rate': 0.0001890909090909091, 'epoch': 0.14}
+{'loss': 1.0584, 'grad_norm': 0.46627265214920044, 'learning_rate': 0.00018545454545454545, 'epoch': 0.16}
+{'loss': 1.042, 'grad_norm': 0.5700973272323608, 'learning_rate': 0.00018181818181818183, 'epoch': 0.17}
+{'loss': 1.1157, 'grad_norm': 0.9143742322921753, 'learning_rate': 0.0001781818181818182, 'epoch': 0.19}
+{'loss': 1.2244, 'grad_norm': 0.7327911853790283, 'learning_rate': 0.00017454545454545454, 'epoch': 0.21}
+{'loss': 0.9935, 'grad_norm': 0.5172788500785828, 'learning_rate': 0.0001709090909090909, 'epoch': 0.22}
+{'loss': 1.213, 'grad_norm': 0.7078420519828796, 'learning_rate': 0.00016727272727272728, 'epoch': 0.24}
+{'loss': 1.1377, 'grad_norm': 0.6878820061683655, 'learning_rate': 0.00016363636363636366, 'epoch': 0.25}
+{'loss': 1.1895, 'grad_norm': 0.8103881478309631, 'learning_rate': 0.00016, 'epoch': 0.27}
+{'loss': 1.1673, 'grad_norm': 0.7553864121437073, 'learning_rate': 0.00015636363636363637, 'epoch': 0.29}
+{'loss': 0.8809, 'grad_norm': 0.6439504027366638, 'learning_rate': 0.00015272727272727275, 'epoch': 0.3}
+{'loss': 1.0912, 'grad_norm': 0.684868574142456, 'learning_rate': 0.0001490909090909091, 'epoch': 0.32}
+{'loss': 1.2055, 'grad_norm': 0.5970612168312073, 'learning_rate': 0.00014545454545454546, 'epoch': 0.33}
+{'loss': 1.0627, 'grad_norm': 0.5572569966316223, 'learning_rate': 0.00014181818181818184, 'epoch': 0.35}
+{'loss': 1.0072, 'grad_norm': 0.6101459264755249, 'learning_rate': 0.0001381818181818182, 'epoch': 0.37}
+{'loss': 1.3303, 'grad_norm': 0.6082642674446106, 'learning_rate': 0.00013454545454545455, 'epoch': 0.38}
+{'loss': 1.4125, 'grad_norm': 0.6390237212181091, 'learning_rate': 0.00013090909090909093, 'epoch': 0.4}
+{'loss': 1.0577, 'grad_norm': 0.612025797367096, 'learning_rate': 0.00012727272727272728, 'epoch': 0.41}
+{'loss': 0.8428, 'grad_norm': 0.628487229347229, 'learning_rate': 0.00012363636363636364, 'epoch': 0.43}
+{'loss': 1.0049, 'grad_norm': 0.5329563021659851, 'learning_rate': 0.00012, 'epoch': 0.44}
+{'loss': 1.2422, 'grad_norm': 0.5865264534950256, 'learning_rate': 0.00011636363636363636, 'epoch': 0.46}
+{'loss': 1.4689, 'grad_norm': 0.6167646050453186, 'learning_rate': 0.00011272727272727272, 'epoch': 0.48}
+{'loss': 0.7848, 'grad_norm': 0.3243206739425659, 'learning_rate': 0.00010909090909090909, 'epoch': 0.49}
+{'loss': 1.0506, 'grad_norm': 0.5659772753715515, 'learning_rate': 0.00010545454545454545, 'epoch': 0.51}
+{'loss': 1.0872, 'grad_norm': 0.569011926651001, 'learning_rate': 0.00010181818181818181, 'epoch': 0.52}
+{'loss': 1.0899, 'grad_norm': 0.6578184366226196, 'learning_rate': 9.818181818181818e-05, 'epoch': 0.54}
+{'loss': 0.9391, 'grad_norm': 0.503865659236908, 'learning_rate': 9.454545454545455e-05, 'epoch': 0.56}
+{'loss': 1.0326, 'grad_norm': 0.3784584403038025, 'learning_rate': 9.090909090909092e-05, 'epoch': 0.57}
+{'loss': 1.0446, 'grad_norm': 0.506281316280365, 'learning_rate': 8.727272727272727e-05, 'epoch': 0.59}
+ 62%|██████████████████████████████████████████████████████████████████████████████████████████▋                                                        | 37/60 [03:33<00:51,  2.22s/it]__triton_launcher.c
+   ライブラリ C:\Users\himak\AppData\Local\Temp\tmp744o2a26\__triton_launcher.cp312-win_amd64.lib とオブジェクト C:\Users\himak\AppData\Local\Temp\tmp744o2a26\__triton_launcher.cp312-win_amd64.exp を作成中
+__triton_launcher.c
+   ライブラリ C:\Users\himak\AppData\Local\Temp\tmpkjr2qtp8\__triton_launcher.cp312-win_amd64.lib とオブジェクト C:\Users\himak\AppData\Local\Temp\tmpkjr2qtp8\__triton_launcher.cp312-win_amd64.exp を作成中
+__triton_launcher.c
+   ライブラリ C:\Users\himak\AppData\Local\Temp\tmppx4xvgtf\__triton_launcher.cp312-win_amd64.lib とオブジェクト C:\Users\himak\AppData\Local\Temp\tmppx4xvgtf\__triton_launcher.cp312-win_amd64.exp を作成中
+{'loss': 0.9032, 'grad_norm': 0.39880406856536865, 'learning_rate': 8.363636363636364e-05, 'epoch': 0.6}
+{'loss': 1.0488, 'grad_norm': 0.5485617518424988, 'learning_rate': 8e-05, 'epoch': 0.62}
+{'loss': 1.0907, 'grad_norm': 0.49022620916366577, 'learning_rate': 7.636363636363637e-05, 'epoch': 0.63}
+{'loss': 1.1194, 'grad_norm': 0.40899747610092163, 'learning_rate': 7.272727272727273e-05, 'epoch': 0.65}
+{'loss': 1.1167, 'grad_norm': 0.40668243169784546, 'learning_rate': 6.90909090909091e-05, 'epoch': 0.67}
+{'loss': 0.8714, 'grad_norm': 0.41771113872528076, 'learning_rate': 6.545454545454546e-05, 'epoch': 0.68}
+{'loss': 1.0075, 'grad_norm': 0.5611118078231812, 'learning_rate': 6.181818181818182e-05, 'epoch': 0.7}
+{'loss': 1.1567, 'grad_norm': 0.6463914513587952, 'learning_rate': 5.818181818181818e-05, 'epoch': 0.71}
+{'loss': 1.0786, 'grad_norm': 0.5287716388702393, 'learning_rate': 5.4545454545454546e-05, 'epoch': 0.73}
+{'loss': 0.9106, 'grad_norm': 0.4623035192489624, 'learning_rate': 5.090909090909091e-05, 'epoch': 0.75}
+{'loss': 1.0608, 'grad_norm': 0.5210844874382019, 'learning_rate': 4.7272727272727275e-05, 'epoch': 0.76}
+{'loss': 0.9711, 'grad_norm': 0.45273199677467346, 'learning_rate': 4.3636363636363636e-05, 'epoch': 0.78}
+{'loss': 1.0204, 'grad_norm': 0.5358032584190369, 'learning_rate': 4e-05, 'epoch': 0.79}
+{'loss': 1.2819, 'grad_norm': 0.5028294324874878, 'learning_rate': 3.6363636363636364e-05, 'epoch': 0.81}
+{'loss': 1.0149, 'grad_norm': 0.5043908357620239, 'learning_rate': 3.272727272727273e-05, 'epoch': 0.83}
+{'loss': 1.2644, 'grad_norm': 0.6297025680541992, 'learning_rate': 2.909090909090909e-05, 'epoch': 0.84}
+{'loss': 0.9808, 'grad_norm': 0.5474236011505127, 'learning_rate': 2.5454545454545454e-05, 'epoch': 0.86}
+{'loss': 0.7098, 'grad_norm': 0.30225956439971924, 'learning_rate': 2.1818181818181818e-05, 'epoch': 0.87}
+{'loss': 0.9952, 'grad_norm': 0.5610087513923645, 'learning_rate': 1.8181818181818182e-05, 'epoch': 0.89}
+{'loss': 1.4415, 'grad_norm': 0.518303632736206, 'learning_rate': 1.4545454545454545e-05, 'epoch': 0.9}
+{'loss': 0.4198, 'grad_norm': 0.2301531285047531, 'learning_rate': 1.0909090909090909e-05, 'epoch': 0.92}
+{'loss': 1.256, 'grad_norm': 0.572762131690979, 'learning_rate': 7.272727272727272e-06, 'epoch': 0.94}
+{'loss': 1.0002, 'grad_norm': 0.5413323044776917, 'learning_rate': 3.636363636363636e-06, 'epoch': 0.95}
+{'train_runtime': 267.2837, 'train_samples_per_second': 1.796, 'train_steps_per_second': 0.224, 'train_loss': 1.1237389246622722, 'epoch': 0.95}
+100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 60/60 [04:27<00:00,  4.45s/it]
+267.2837 seconds used for training.
+4.45 minutes used for training.
+Peak reserved memory = 12.498 GB.
+Peak reserved memory for training = 6.398 GB.
+Peak reserved memory % of max memory = 52.075 %.
+Peak reserved memory for training % of max memory = 26.658 %.
+<|start_of_role|>system<|end_of_role|>You are a helpful assistant. Please ensure responses are professional, accurate, and safe.<|end_of_text|>
+<|start_of_role|>user<|end_of_role|>
+    User: Everyone in my meeting just sees a black screen when I share.
+    Agent: Sorry about that—are you sharing a window or your entire screen?
+    User: Entire screen on macOS Sonoma.
+    Agent: Thanks. Do you have “Enable hardware acceleration” toggled on in Settings → Video?
+    User: Yeah, that switch is on.
+    Agent: Could you try toggling it off and start a quick test share?
+    User: Did that—still black for attendees.
+    Agent: Understood. Are you on the desktop app v5.4.2 or the browser client?
+    User: Desktop v5.4.2—just updated this morning.
+    __triton_launcher.c
+   ライブラリ C:\Users\himak\AppData\Local\Temp\tmphwx13_vb\__triton_launcher.cp312-win_amd64.lib とオブジェクト C:\Users\himak\AppData\Local\Temp\tmphwx13_vb\__triton_launcher.cp312-win_amd64.exp を作成中
+__triton_launcher.c
+   ライブラリ C:\Users\himak\AppData\Local\Temp\tmpptsftjca\__triton_launcher.cp312-win_amd64.lib とオブジェクト C:\Users\himak\AppData\Local\Temp\tmpptsftjca\__triton_launcher.cp312-win_amd64.exp を作成中
+__triton_launcher.c
+   ライブラリ C:\Users\himak\AppData\Local\Temp\tmpx1kzr6_i\__triton_launcher.cp312-win_amd64.lib とオブジェクト C:\Users\himak\AppData\Local\Temp\tmpx1kzr6_i\__triton_launcher.cp312-win_amd64.exp を作成中
+__triton_launcher.c
+   ライブラリ C:\Users\himak\AppData\Local\Temp\tmpmffxyxvm\__triton_launcher.cp312-win_amd64.lib とオブジェクト C:\Users\himak\AppData\Local\Temp\tmpmffxyxvm\__triton_launcher.cp312-win_amd64.exp を作成中
+<|end_of_text|>
+<|start_of_role|>assistant<|end_of_role|>#### Analysis
+The user is experiencing a black screen during screen sharing despite having hardware acceleration enabled and being on the latest desktop client version. This suggests a potential issue with the sharing mechanism or display settings on the macOS Sonoma system.
+
+#### Recommendation
+- Step 1: Confirm the user is using the desktop client v5.4.2 (as indicated).
+- Step 2: Instruct the user to completely restart their macOS system (reboot) and then attempt the share again.
+- *Next best action for the agent*: Ask the user to report if the issue persists after the reboot.<|end_of_text|>
+<|start_of_role|>system<|end_of_role|>You are a helpful assistant. Please ensure responses are professional, accurate, and safe.<|end_of_text|>
+<|start_of_role|>user<|end_of_role|>
+    User: I changed the batteries, but the lock app still says 5 % and won’t auto-lock.
+    Agent: Let’s check firmware. In the app, go to Settings → Device Info—what version shows?
+    User: 3.18.0-alpha.
+    Agent: Latest stable is 3.17.5. Did you enroll in the beta program?
+    User: I might have months ago.
+    Agent: Beta builds sometimes misreport battery. Remove one battery, wait ten seconds, reinsert, and watch the LED pattern.
+    User: LED blinks blue twice, then red once.
+    Agent: That blink code means “config mismatch.” Do you still have the old batteries handy?
+    User: Tossed them already.
+    <|end_of_text|>
+<|start_of_role|>assistant<|end_of_role|>#### Analysis
+The user's lock app shows 5% battery and fails to auto-lock, despite recent battery replacement. The firmware version (3.18.0-alpha) is outdated, and the user previously enrolled in the beta program, which may cause misreporting. The LED blink pattern indicates a "config mismatch" error.
+
+#### Recommendation
+- Step 1: Remove the user's current batteries.
+- Step 2: Wait 10 seconds.
+- Step 3: Reinsert the batteries.
+- Step 4: Observe the LED pattern for confirmation.
+- *Next best action for the agent*: Ask the user to confirm if they have the old batteries available for reinsertion.<|end_of_text|>
+'(ReadTimeoutError("HTTPSConnectionPool(host='huggingface.co', port=443): Read timed out. (read timeout=10)"), '(Request ID: 1b152c45-d1a9-4959-8f8f-0400a453d5f9)')' thrown while requesting HEAD https://huggingface.co/unsloth/granite-4.0-h-micro/resolve/main/config.json
+[huggingface_hub.utils._http|WARNING]'(ReadTimeoutError("HTTPSConnectionPool(host='huggingface.co', port=443): Read timed out. (read timeout=10)"), '(Request ID: 1b152c45-d1a9-4959-8f8f-0400a453d5f9)')' thrown while requesting HEAD https://huggingface.co/unsloth/granite-4.0-h-micro/resolve/main/config.json
+Retrying in 1s [Retry 1/5].
+[huggingface_hub.utils._http|WARNING]Retrying in 1s [Retry 1/5].
+config.json: 1.82kB [00:00, ?B/s]
+Found HuggingFace hub cache directory: C:\Users\himak\.cache\huggingface\hub
+model.safetensors.index.json: 37.4kB [00:00, 74.7MB/s]
+Checking cache directory for required files...
+Cache check failed: model-00001-of-00002.safetensors not found in local cache.
+Not all required files found in cache. Will proceed with downloading.
+Checking cache directory for required files...
+Cache check failed: tokenizer.model not found in local cache.
+Not all required files found in cache. Will proceed with downloading.
+Unsloth: Preparing safetensor model files:   0%|                                                                                                                  | 0/2 [00:00<?, ?it/s]'(ReadTimeoutError("HTTPSConnectionPool(host='cas-bridge.xethub.hf.co', port=443): Read timed out. (read timeout=10)"), '(Request ID: 86912409-aaaa-4931-ab63-c95d44174eff)')' thrown while requesting GET https://huggingface.co/unsloth/granite-4.0-h-micro/resolve/main/model-00001-of-00002.safetensors
+[huggingface_hub.utils._http|WARNING]'(ReadTimeoutError("HTTPSConnectionPool(host='cas-bridge.xethub.hf.co', port=443): Read timed out. (read timeout=10)"), '(Request ID: 86912409-aaaa-4931-ab63-c95d44174eff)')' thrown while requesting GET https://huggingface.co/unsloth/granite-4.0-h-micro/resolve/main/model-00001-of-00002.safetensors
+Retrying in 1s [Retry 1/5].
+[huggingface_hub.utils._http|WARNING]Retrying in 1s [Retry 1/5].
+model-00001-of-00002.safetensors: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████▉| 4.99G/4.99G [00:43<00:00, 114MB/s]
+model-00002-of-00002.safetensors: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████▉| 1.39G/1.39G [00:14<00:00, 98.7MB/s]
+Unsloth: Preparing safetensor model files: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████| 2/2 [01:11<00:00, 35.64s/it]
+Note: tokenizer.model not found (this is OK for non-SentencePiece models)
+Unsloth: Merging weights into 16bit: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 2/2 [00:19<00:00,  9.54s/it]
+Unsloth: Merge process complete. Saved to `I:\dev\mamba_test1\granite_unsloth_test1\model`
