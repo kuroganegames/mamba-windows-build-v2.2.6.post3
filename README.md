@@ -1,7 +1,8 @@
 # mamba-windows-build-v2.2.6.post3
 
 > [!WARNING]
-> 多分動作します。何があっても絶対に動作保証をしません。<br />
+> Directed and developed by gpt-5.1-codex-max and prayed by me.
+> 自環境では動作しました。動作保証は致しかねます。<br />
 > It will probably work. We absolutely do not guarantee any functionality under any circumstances.
 
 Codex CLIの`gpt-5.1-codex-max ( Extra high)`でvibe codingで修正させました。
